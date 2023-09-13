@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Define the directory to start the search from (change this to your desired directory)
+search_directory="/"
+
+# Define the minimum file size (in megabytes) to consider as large
+min_size_mb=100
+
+echo "Finding large files (greater than ${min_size_mb}MB) in $search_directory..."
+echo "=========================="
+
+# Use the find command to locate large files and display their details
+find "$search_directory" -type f -size "+${min_size_mb}M" -exec du -h {} + | sort -rh | head -n 10
